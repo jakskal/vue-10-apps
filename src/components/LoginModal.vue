@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="isLoginOpen">
         <section
             @click="close"
             class="z-20 h-screen w-screen bg-gray-400 fixed top-0 opacity-50"
@@ -45,6 +45,7 @@
             </div>
         </div>
     </div>
+    
 </template>
 
 <script>
@@ -54,6 +55,11 @@ import GoogleLogin from "../components/Login/Google.vue"
 
 export default {
     components: {GoogleLogin},
+    computed:{
+            isLoginOpen(){
+                return this.$store.state.isLoginOpen
+            }
+        },
     methods: {
         submit() {
             this.isLoading = true;
@@ -72,9 +78,10 @@ export default {
                 });
         },
         close() {
-            this.$emit("close-login");
+            this.$store.commit('setLoginModal', false)
+
         },
-        
+
     },
     data() {
         return {
@@ -84,7 +91,7 @@ export default {
         };
     },
     mounted() {
-        this.$refs.emailRef.focus();
+        // this.$refs.emailRef.focus();
     },
 };
 </script>
