@@ -8,6 +8,7 @@ import Slider from './pages/Slider.vue';
 import Calculator from './pages/Calculator.vue';
 import ReusableModal from './pages/ReusableModal.vue';
 import Chat from './pages/Chat.vue';
+import UserCrud from './pages/UserCrud.vue';
 import store from './store';
 
 const routes = [
@@ -20,6 +21,7 @@ const routes = [
     {path:'/reusable-modal', component:ReusableModal},
     {path:'/chat', component:Chat,
     meta:{middleware:"auth"}},
+    {path:'/user-crud', component:UserCrud},
 
 ]
     
